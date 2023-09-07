@@ -25,7 +25,7 @@ def do_pack():
     archive_path = "versions/web_static_{}.tgz".format(timestamp)
     try:
         print("Packing web_static to {}".format(archive_path))
-        local(f"tar -cvzf {archive_path} web_static")
+        local("tar -cvzf {} web_static".format(archive_path))
         archize_size = os.stat(archive_path).st_size
         print("web_static packed: {} -> {} Bytes".format(archive_path, archize_size))
     except Exception:
