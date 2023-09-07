@@ -24,10 +24,10 @@ def do_pack():
     timestamp = datetime.now().strftime(time_format)
     archive_path = "versions/web_static_{}.tgz".format(timestamp)
     try:
-        print(f"Packing web_static to {archive_path}")
+        print("Packing web_static to {}".format(archive_path))
         local(f"tar -cvzf {archive_path} web_static")
         archize_size = os.stat(archive_path).st_size
-        print(f"web_static packed: {archive_path} -> {archize_size} Bytes")
+        print("web_static packed: {} -> {} Bytes".format(archive_path, archize_size))
     except Exception:
         output = None
     return output
