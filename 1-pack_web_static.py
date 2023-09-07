@@ -7,19 +7,8 @@ from fabric.api import local
 
 def do_pack():
     """Archives the contents of the static files."""
-    # if not os.path.isdir("versions"):
-    #     os.mkdir("versions")
     local("mkdir -p versions")
 
-    # cur_time = datetime.now()
-    # output = "versions/web_static_{}{}{}{}{}{}.tgz".format(
-    #     cur_time.year,
-    #     cur_time.month,
-    #     cur_time.day,
-    #     cur_time.hour,
-    #     cur_time.minute,
-    #     cur_time.second
-    # )
     time_format = "%Y%m%d%H%M%S"
     timestamp = datetime.now().strftime(time_format)
     archive_path = "versions/web_static_{}.tgz".format(timestamp)
