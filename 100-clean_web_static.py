@@ -71,6 +71,7 @@ def do_clean(number=0):
 
     archive_list = os.listdir('versions/')
     archive_list.sort(reverse=True)
+    number = int(number)
 
     if not number:
         number += 1
