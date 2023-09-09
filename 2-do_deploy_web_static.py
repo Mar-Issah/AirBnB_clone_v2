@@ -7,6 +7,7 @@ from fabric.api import local, put, run, env
 env.hosts = ['54.237.102.87', '54.210.57.49']
 env.user = "ubuntu"
 
+
 def do_pack():
     """Archives the contents of the static files."""
     local("mkdir -p versions")
@@ -18,7 +19,8 @@ def do_pack():
         print("Packing web_static to {}".format(archive_path))
         local("tar -cvzf {} web_static".format(archive_path))
         archize_size = os.stat(archive_path).st_size
-        print("web_static packed: {} -> {} Bytes".format(archive_path, archize_size))
+        print("web_static packed: {} -> {} Bytes".format(
+            archive_path, archize_size))
     except Exception:
         archive_path = None
     return archive_path
