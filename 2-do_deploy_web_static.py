@@ -22,7 +22,7 @@ def do_pack():
     return archive_path
 
 
-env.hosts = ['100.26.234.57', '100.25.38.27']
+env.hosts = ['54.237.102.87', '54.210.57.49']
 
 def do_deploy(archive_path):
     """ Distributes an archive to your web servers
