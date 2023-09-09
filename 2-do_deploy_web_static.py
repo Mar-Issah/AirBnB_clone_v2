@@ -4,6 +4,8 @@ import os
 from datetime import datetime
 from fabric.api import local, put, run, env
 
+env.hosts = ['54.237.102.87', '54.210.57.49']
+env.user = "ubuntu"
 
 def do_pack():
     """Archives the contents of the static files."""
@@ -21,8 +23,6 @@ def do_pack():
         archive_path = None
     return archive_path
 
-
-env.hosts = ['54.237.102.87', '54.210.57.49']
 
 def do_deploy(archive_path):
     """ Distributes an archive to your web servers
