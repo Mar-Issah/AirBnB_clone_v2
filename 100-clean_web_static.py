@@ -4,6 +4,9 @@ import os
 from datetime import datetime
 from fabric.api import local, put, run, env
 
+env.hosts = ['54.237.102.87', '54.210.57.49']
+env.user = "ubuntu"
+
 
 def do_pack():
     """Archives the contents of the static files."""
@@ -16,13 +19,12 @@ def do_pack():
         print("Packing web_static to {}".format(archive_path))
         local("tar -cvzf {} web_static".format(archive_path))
         archize_size = os.stat(archive_path).st_size
-        print("web_static packed: {} -> {} Bytes".format(archive_path, archize_size))
+        print("web_static packed: {} -> {} Bytes"
+              .format(archive_path, archize_size))
     except Exception:
         archive_path = None
     return archive_path
 
-
-env.hosts = ['100.26.234.57', '100.25.38.27']
 
 def do_deploy(archive_path):
     """ Distributes an archive to your web servers
@@ -62,6 +64,7 @@ def deploy():
     """
     archive_path = do_pack()
     return do_deploy(archive_path) if archive_path else False
+
 
 def do_clean(number=0):
     """script that deletes out-of-date archives"""
