@@ -4,9 +4,10 @@ from flask import Flask
 
 
 app = Flask(__name__)
+app.url_map.strict_slashes = False
 
 
-@app.route('/', strict_slashes = False)
+@app.route('/')
 def index():
     """The website home page."""
     return 'Hello HBNB!'
@@ -24,8 +25,8 @@ def c_page(text):
     return 'C {}'.format(text.replace('_', ' '))
 
 
-@app.route('/python/<text>')
-@app.route('/python', defaults={'text': 'is cool'})
+@app.route('/python/<text>', strict_slashes=False)
+@app.route('/python', defaults={'text': 'is cool'},strict_slashes = False)
 def python_page(text):
     """Page that display Python followed by the value"""
     return f'Python {text.replace("_", " ")}'
