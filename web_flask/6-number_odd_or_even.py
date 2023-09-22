@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """A script that starts a Flask web application"""
-from flask import Flask
+from flask import Flask, render_template
 
 
 app = Flask(__name__)
@@ -30,6 +30,24 @@ def c_page(text):
 def python_page(text):
     """Page that display Python followed by the value"""
     return f'Python {text.replace("_", " ")}'
+
+
+@app.route('/number/<int:n>')
+def number_page(n):
+    """Page displays a number int."""
+    return f'{n} is a number'
+
+
+@app.route('/number_template/<int:n>')
+def number_template(n):
+    """display the number_template page."""
+    return render_template('5-number.html', n=n)
+
+
+@app.route('/number_odd_or_even/<int:n>')
+def number_odd_or_even(n):
+    """Display page with number if odd or even"""
+    return render_template('6-number_odd_or_even.html', n=n)
 
 
 if __name__ == '__main__':
