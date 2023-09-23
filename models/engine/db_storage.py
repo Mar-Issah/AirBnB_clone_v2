@@ -23,7 +23,9 @@ class DBStorage:
             Base.metadata.drop_all(self.__engine)
 
         self.__engine = create_engine(
-            f'mysql+mysqldb://{getenv("HBNB_MYSQL_USER")}:{getenv("HBNB_MYSQL_PWD")}@{getenv("HBNB_MYSQL_HOST")}/{getenv("HBNB_MYSQL_DB")}',
+            f'mysql+mysqldb://{getenv("HBNB_MYSQL_USER")}:'
+            f'{getenv("HBNB_MYSQL_PWD")}@'
+            f'{getenv("HBNB_MYSQL_HOST")}/{getenv("HBNB_MYSQL_DB")}',
             pool_pre_ping=True
         )
 

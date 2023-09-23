@@ -7,6 +7,7 @@ from sqlalchemy import Column, String
 from models.city import City
 import os
 
+
 class State(BaseModel, Base):
     """ State class """
     __tablename__ = 'states'
