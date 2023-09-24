@@ -32,7 +32,7 @@ def states(id=None):
     states_dic = {
         'states': states,
         'state': state,
-        'case': found
+        'found': found
     }
     return render_template('9-states.html', states=states_dic)
 
