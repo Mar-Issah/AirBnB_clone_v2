@@ -16,25 +16,25 @@ def states(id=None):
     states = None
     state = None
     all_states = list(storage.all(State).values())
-    found = 404
+    case = 404
     if id is not None:
         res = list(filter(lambda x: x.id == id, all_states))
         if len(res) > 0:
             state = res[0]
             state.cities.sort(key=lambda x: x.name)
-            found = 2
+            case = 2
     else:
         states = all_states
         for state in states:
             state.cities.sort(key=lambda x: x.name)
         states.sort(key=lambda x: x.name)
-        found = 1
-    states_dic = {
+        case = 1
+    ctxt = {
         'states': states,
         'state': state,
-        'found': found
+        'case': case
     }
-    return render_template('9-states.html', states=states_dic)
+    return render_template('9-states.html', **ctxt)
 
 
 @app.teardown_appcontext
